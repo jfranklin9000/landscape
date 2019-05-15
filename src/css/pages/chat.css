@@ -109,6 +109,16 @@ textarea.chat-input-field {
     /* use !important to prevent breakage from child margin settings */
 }
 
+/* Firefox ignores padding when using overflow:scroll */
+/* https://stackoverflow.com/questions/29986977/firefox-ignores-padding-when-using-overflowscroll */
+/* https://github.com/urbit/landscape/issues/29 */
+.chat-scrollpane-view ::after {
+  display: block;
+  height: 0px;
+  opacity: 0;
+  content: ".";  /* "" or " " doesn't work */
+}
+
 .scrollpane {
   height: 600px;
   overflow-y: scroll;
